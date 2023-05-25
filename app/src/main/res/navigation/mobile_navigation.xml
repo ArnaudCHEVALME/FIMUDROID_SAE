@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_news">
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.example.fimudroid.ui.news.NewsListFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/news_recycler" >
+        <action
+            android:id="@+id/action_navigation_news_to_newsDetails"
+            app:destination="@id/newsDetails"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right">
+            <argument
+                android:name="news_id"
+                android:defaultValue="1" />
+        </action>
+        <argument
+            android:name="news_id"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_artiste_list"
+        android:name="com.example.fimudroid.ui.artistes.ArtistListFragment"
+        android:label="@string/title_artiste_list"
+        tools:layout="@layout/artist_recycler" >
+        <action
+            android:id="@+id/action_navigation_artiste_list_to_artisteDetailsFragment"
+            app:destination="@id/artisteDetailsFragment">
+            <argument
+                android:name="itemId"
+                android:defaultValue="0" />
+        </action>
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsDetails"
+        android:name="com.example.fimudroid.ui.news.NewsDetails"
+        android:label="NewsDetails"
+        tools:layout="@layout/news_details_fragment">
+        <argument android:name="news_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/artisteDetailsFragment"
+        android:name="com.example.fimudroid.ui.artistes.ArtisteDetailsFragment"
+        android:label="@string/title_artiste_list"
+        tools:layout="@layout/artiste_details_fragment" >
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+    </fragment>
+    <argument
+        android:name="news_id"
+        android:defaultValue="0" />
+    <fragment
+        android:id="@+id/navigation_programmation"
+        android:name="com.example.fimudroid.ui.planning.PlanningFragment"
+        android:label="fragment_planning"
+        tools:layout="@layout/fragment_planning" >
+        <action
+            android:id="@+id/action_programmation_to_artisteDetails"
+            app:destination="@id/artisteDetailsFragment" >
+            <argument
+                android:name="itemId"
+                android:defaultValue="-1" />
+        </action>
+        <argument
+            android:name="artisteId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_plan"
+        android:name="com.example.fimudroid.ui.map.MapFragment"
+        android:label="Plan"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/navigation_faq"
+        android:name="com.example.fimudroid.ui.FAQs.FAQListFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/faq_recycler" >
+        <action
+            android:id="@+id/action_navigation_faq_to_faqDetailsFragment"
+            app:destination="@id/navigation_faq"/>
+            <argument
+                android:name="itemId"
+                android:defaultValue="0" />
+    </fragment>
+
+</navigation>
